@@ -45,23 +45,28 @@ const _0x9i0j = 'blhsOG1UblZVb1VvR1VVTXJWb1Z2RXhrSm5mVVJW';
     
     // Dynamic key generation
     const _0xm2n3 = function() {
-        // Method 1: Array join with dynamic separator
-        const method1 = _0x1a2b.filter((item, index) => index % 3 !== 2).join('');
-        
-        // Method 2: Character code conversion
-        const method2 = String.fromCharCode.apply(null, _0x5e6f);
-        
-        // Method 3: XOR decoding
-        const method3 = _0x5e6f.map(char => String.fromCharCode(char ^ _0x7g8h)).join('');
-        
-        // Method 4: Base64 decode
-        const method4 = atob(_0x9i0j);
-        
-        // Validate all methods produce the same result
-        const keys = [method1, method2, method3, method4];
-        const validKey = keys.find(key => key && key.length === 40 && key.startsWith('nY') && key.endsWith('URV'));
-        
-        return validKey || null;
+        try {
+            // Method 1: Simple array join (most reliable)
+            const method1 = _0x1a2b.join('');
+            
+            // Method 2: Character code conversion
+            const method2 = String.fromCharCode.apply(null, _0x5e6f);
+            
+            // Method 3: Base64 decode
+            const method3 = atob(_0x9i0j);
+            
+            // Validate and return the first valid method
+            const keys = [method1, method2, method3];
+            for (let key of keys) {
+                if (key && key.length === 40 && key.startsWith('nY') && key.endsWith('URV')) {
+                    return key;
+                }
+            }
+            
+            return null;
+        } catch (e) {
+            return null;
+        }
     };
     
     // Secure configuration object
@@ -126,14 +131,14 @@ const _0x9i0j = 'blhsOG1UblZVb1VvR1VVTXJWb1Z2RXhrSm5mVVJW';
             // Clear console
             console.clear();
             
-            // Remove references
-            delete _0x1a2b;
-            delete _0x3c4d;
-            delete _0x5e6f;
-            delete _0x7g8h;
-            delete _0x9i0j;
-            delete _0xm2n3;
-            delete _0xo4p5;
+            // Remove references (avoid strict mode errors)
+            if (typeof _0x1a2b !== 'undefined') _0x1a2b = null;
+            if (typeof _0x3c4d !== 'undefined') _0x3c4d = null;
+            if (typeof _0x5e6f !== 'undefined') _0x5e6f = null;
+            if (typeof _0x7g8h !== 'undefined') _0x7g8h = null;
+            if (typeof _0x9i0j !== 'undefined') _0x9i0j = null;
+            if (typeof _0xm2n3 !== 'undefined') _0xm2n3 = null;
+            if (typeof _0xo4p5 !== 'undefined') _0xo4p5 = null;
         } catch (e) {
             // Silently fail
         }
