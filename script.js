@@ -35,12 +35,12 @@ class NutriCheck {
     getApiBaseUrl() {
         // Use proxy server if available, otherwise direct API
         if (typeof window !== 'undefined' && window.location) {
-            const isProduction = window.location.hostname === 'nutricheck.github.io';
+            const isGitHubPages = window.location.hostname === 'collins-creates.github.io';
             const isLocalhost = window.location.hostname === 'localhost';
             
-            // Use proxy in production, direct API for development
-            if (isProduction) {
-                return '/api/fdc'; // Proxy server endpoint
+            // Use direct API for GitHub Pages (no proxy available)
+            if (isGitHubPages) {
+                return 'https://api.nal.usda.gov/fdc/v1'; // Direct API
             } else if (isLocalhost) {
                 return 'http://localhost:3001/api/fdc'; // Local proxy
             }
@@ -1048,11 +1048,25 @@ class NutriCheck {
     }
 
     async fetchFoodSearch(query) {
-        const url = `${this.baseURL}/foods/search?query=${encodeURIComponent(query)}&pageSize=10&api_key=${this.apiKey}`;
+        // Check if we're using direct API (need to add API key) or proxy (API key added server-side)
+        let url;
+        if (this.baseURL.includes('api.nal.usda.gov')) {
+            // Direct API - add API key
+            url = `${this.baseURL}/foods/search?query=${encodeURIComponent(query)}&pageSize=10&api_key=${this.apiKey}`;
+        } else {
+            // Proxy server - API key added server-side
+            url = `${this.baseURL}/foods/search?query=${encodeURIComponent(query)}&pageSize=10`;
+        }
         
         const response = await fetch(url);
         if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+            if (response.status === 401) {
+                throw new Error('Invalid API key. Please check your configuration.');
+            } else if (response.status === 429) {
+                throw new Error('API rate limit exceeded. Please try again later.');
+            } else {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
         }
         
         const data = await response.json();
