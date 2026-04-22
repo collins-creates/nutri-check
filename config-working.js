@@ -1,12 +1,9 @@
 // NutriCheck Working Configuration
 // Simple, functional configuration that works
 
-// USDA API Key - using character code obfuscation
-// Exact API Key: nYLm8TmWUTuVDoFUgm94P4FkKnPfgrdEexKnfURV
-const key = String.fromCharCode(
-    110, 89, 76, 109, 56, 84, 109, 87, 85, 84, 117, 86, 68, 111, 70, 85, 103, 109, 
-    57, 52, 80, 52, 70, 107, 75, 110, 80, 102, 103, 114, 100, 69, 101, 120, 75, 110, 102, 85, 82, 86
-);
+// USDA API Key - direct for testing
+// Please replace with your actual API key from: https://fdc.nal.usda.gov/api-key-signup
+const key = 'nYLm8TmWUTuVDoFUgm94P4FkKnPfgrdEexKnfURV';
 
 const CONFIG = {
     // USDA Food Data Central API Key
@@ -30,10 +27,13 @@ const CONFIG = {
 // Validate the key
 if (!CONFIG.USDA_API_KEY) {
     console.error('API key is null or undefined');
+} else if (CONFIG.USDA_API_KEY === 'nYLm8TmWUTuVDoFUgm94P4FkKnPfgrdEexKnfURV') {
+    console.log('API key loaded successfully');
+    console.log('Key length:', CONFIG.USDA_API_KEY.length);
+    console.log('Ready to connect to USDA API');
 } else {
-    console.log('API key length:', CONFIG.USDA_API_KEY.length);
-    console.log('API key value:', CONFIG.USDA_API_KEY);
-    console.log('API key successfully configured');
+    console.log('Using custom API key');
+    console.log('Key length:', CONFIG.USDA_API_KEY.length);
 }
 
 // Make available globally
