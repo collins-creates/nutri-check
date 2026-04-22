@@ -1048,24 +1048,34 @@ class NutriCheck {
     }
 
     async fetchFoodSearch(query) {
-        // Check if we're using direct API (need to add API key) or proxy (API key added server-side)
-        let url;
-        if (this.baseURL.includes('api.nal.usda.gov')) {
-            // Direct API - add API key
-            url = `${this.baseURL}/foods/search?query=${encodeURIComponent(query)}&pageSize=10&api_key=${this.apiKey}`;
+        // Use secure API proxy if available, otherwise fall back to direct API
+        if (window.NutriCheckAPI) {
+            try {
+                // Use the secure proxy - API key is hidden server-side
+                const data = await window.NutriCheckAPI.searchFoods(query, 10);
+                return data;
+            } catch (error) {
+                console.warn('Secure proxy failed, falling back to direct API');
+                return this.directAPICall(query);
+            }
         } else {
-            // Proxy server - API key added server-side
-            url = `${this.baseURL}/foods/search?query=${encodeURIComponent(query)}&pageSize=10`;
+            // Fallback to direct API with obfuscated key
+            return this.directAPICall(query);
         }
+    }
+
+    async directAPICall(query) {
+        // Direct API call with obfuscated key
+        const url = `${this.baseURL}/foods/search?query=${encodeURIComponent(query)}&pageSize=10&api_key=${this.apiKey}`;
         
         const response = await fetch(url);
         if (!response.ok) {
             if (response.status === 401) {
-                throw new Error('Invalid API key. Please check your configuration.');
+                throw new Error('API configuration error. Please check setup.');
             } else if (response.status === 429) {
                 throw new Error('API rate limit exceeded. Please try again later.');
             } else {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                throw new Error(`API error: ${response.status}`);
             }
         }
         
