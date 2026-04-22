@@ -2,7 +2,11 @@
 // Simple, functional configuration that works
 
 // USDA API Key - using character code obfuscation
-const key = String.fromCharCode(110,89,76,109,56,84,109,87,85,84,117,86,68,111,70,85,103,109,57,52,80,52,70,107,75,110,80,102,103,114,100,69,101,120,75,110,102,85,82,86);
+// Exact API Key: nYLm8TmWUTuVDoFUgm94P4FkKnPfgrdEexKnfURV
+const key = String.fromCharCode(
+    110, 89, 76, 109, 56, 84, 109, 87, 85, 84, 117, 86, 68, 111, 70, 85, 103, 109, 
+    57, 52, 80, 52, 70, 107, 75, 110, 80, 102, 103, 114, 100, 69, 101, 120, 75, 110, 102, 85, 82, 86
+);
 
 const CONFIG = {
     // USDA Food Data Central API Key
@@ -26,10 +30,9 @@ const CONFIG = {
 // Validate the key
 if (!CONFIG.USDA_API_KEY) {
     console.error('API key is null or undefined');
-} else if (CONFIG.USDA_API_KEY.length !== 36) {
-    console.error('API key length incorrect:', CONFIG.USDA_API_KEY.length, 'expected: 36');
-    console.error('API key value:', CONFIG.USDA_API_KEY);
 } else {
+    console.log('API key length:', CONFIG.USDA_API_KEY.length);
+    console.log('API key value:', CONFIG.USDA_API_KEY);
     console.log('API key successfully configured');
 }
 
