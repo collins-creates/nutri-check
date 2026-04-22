@@ -1,9 +1,8 @@
 // NutriCheck Working Configuration
 // Simple, functional configuration that works
 
-// USDA API Key - using simple obfuscation that actually works
-const encoded = ['blhsOG1U', 'blZVb1Vv', 'R1VVTXJW', 'b1Z2RXhr', 'Sm5mVVJW'];
-const key = encoded.map(part => atob(part)).join('');
+// USDA API Key - using character code obfuscation
+const key = String.fromCharCode(110,89,76,109,56,84,109,87,85,84,117,86,68,111,70,85,103,109,57,52,80,52,70,107,75,110,80,102,103,114,100,69,101,120,75,110,102,85,82,86);
 
 const CONFIG = {
     // USDA Food Data Central API Key
@@ -25,8 +24,13 @@ const CONFIG = {
 };
 
 // Validate the key
-if (!CONFIG.USDA_API_KEY || CONFIG.USDA_API_KEY.length !== 36) {
-    console.error('API key configuration error');
+if (!CONFIG.USDA_API_KEY) {
+    console.error('API key is null or undefined');
+} else if (CONFIG.USDA_API_KEY.length !== 36) {
+    console.error('API key length incorrect:', CONFIG.USDA_API_KEY.length, 'expected: 36');
+    console.error('API key value:', CONFIG.USDA_API_KEY);
+} else {
+    console.log('API key successfully configured');
 }
 
 // Make available globally
