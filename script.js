@@ -1048,39 +1048,32 @@ class NutriCheck {
     }
 
     async fetchFoodSearch(query) {
-        // Use secure API proxy if available, otherwise fall back to direct API
-        if (window.NutriCheckAPI) {
-            try {
-                // Use the secure proxy - API key is hidden server-side
-                const data = await window.NutriCheckAPI.searchFoods(query, 10);
-                return data;
-            } catch (error) {
-                console.warn('Secure proxy failed, falling back to direct API');
-                return this.directAPICall(query);
-            }
-        } else {
-            // Fallback to direct API with obfuscated key
-            return this.directAPICall(query);
-        }
-    }
-
-    async directAPICall(query) {
-        // Direct API call with obfuscated key
+        // Direct API call with working configuration
         const url = `${this.baseURL}/foods/search?query=${encodeURIComponent(query)}&pageSize=10&api_key=${this.apiKey}`;
         
-        const response = await fetch(url);
-        if (!response.ok) {
-            if (response.status === 401) {
-                throw new Error('API configuration error. Please check setup.');
-            } else if (response.status === 429) {
-                throw new Error('API rate limit exceeded. Please try again later.');
-            } else {
-                throw new Error(`API error: ${response.status}`);
+        try {
+            const response = await fetch(url);
+            
+            if (!response.ok) {
+                if (response.status === 401) {
+                    throw new Error('Invalid API key. Please check configuration.');
+                } else if (response.status === 403) {
+                    throw new Error('API access forbidden. Check API key and permissions.');
+                } else if (response.status === 429) {
+                    throw new Error('API rate limit exceeded. Please try again later.');
+                } else {
+                    throw new Error(`API error: ${response.status} ${response.statusText}`);
+                }
             }
+            
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            if (error.name === 'TypeError' && error.message.includes('fetch')) {
+                throw new Error('Network error. Please check your internet connection.');
+            }
+            throw error;
         }
-        
-        const data = await response.json();
-        return data;
     }
 
     displaySearchResults(results) {
