@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#28a745;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#34ce57;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="16" cy="16" r="15" fill="#f8f9fa" stroke="#28a745" stroke-width="2"/>
+  
+  <!-- Leaf symbol representing nutrition/health -->
+  <path d="M16 8 C12 8, 8 12, 8 16 C8 20, 12 24, 16 24 C20 24, 24 20, 24 16 C24 12, 20 8, 16 8 Z" 
+        fill="url(#gradient)" opacity="0.9"/>
+  
+  <!-- Central vein of leaf -->
+  <path d="M16 10 L16 22" stroke="#1e7e34" stroke-width="1.5" fill="none"/>
+  
+  <!-- Leaf veins -->
+  <path d="M16 14 L12 12 M16 16 L12 16 M16 18 L12 20" 
+        stroke="#1e7e34" stroke-width="1" fill="none" opacity="0.7"/>
+  <path d="M16 14 L20 12 M16 16 L20 16 M16 18 L20 20" 
+        stroke="#1e7e34" stroke-width="1" fill="none" opacity="0.7"/>
+  
+  <!-- Small checkmark for quality/trust -->
+  <path d="M13 16 L15 18 L19 14" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

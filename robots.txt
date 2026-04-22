@@ -1,0 +1,28 @@
+# NutriCheck Robots.txt
+# Allow all search engines to crawl the site
+
+User-agent: *
+Allow: /
+
+# Block unnecessary bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Sitemap location
+Sitemap: https://nutricheck.github.io/sitemap.xml
+
+# Allow specific important directories
+User-agent: Googlebot
+Allow: /
+Allow: /styles.css
+Allow: /script.js
+Allow: /favicon.svg
+
+# Crawl delay for respectful crawling
+Crawl-delay: 1

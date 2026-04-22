@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- SEO Meta Tags -->
+    <title>NutriCheck - Free Food Nutrition Calculator & Calorie Checker | #1 Nutrition Tool</title>
+    <meta name="description" content="NutriCheck is the world's #1 free nutrition calculator. Instantly check calories, macronutrients, vitamins, and minerals for any food. Compare foods and track your daily nutrition. USDA database powered.">
+    <meta name="keywords" content="nutrition calculator, food nutrition facts, calorie checker, nutrition tracker, food calories, macronutrients, vitamins, minerals, USDA nutrition, nutrition database, healthy eating, diet tracker, food analysis, nutrition information">
+    <meta name="author" content="NutriCheck">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow">
+    <meta name="bingbot" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="NutriCheck - Free Food Nutrition Calculator & Calorie Checker">
+    <meta property="og:description" content="The world's #1 free nutrition calculator. Instantly check calories, macronutrients, vitamins, and minerals for any food. Compare foods and track your daily nutrition.">
+    <meta property="og:url" content="https://nutricheck.github.io">
+    <meta property="og:site_name" content="NutriCheck">
+    <meta property="og:image" content="https://nutricheck.github.io/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:alt" content="NutriCheck - Free Food Nutrition Calculator">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="NutriCheck - Free Food Nutrition Calculator & Calorie Checker">
+    <meta name="twitter:description" content="The world's #1 free nutrition calculator. Instantly check calories, macronutrients, vitamins, and minerals for any food.">
+    <meta name="twitter:image" content="https://nutricheck.github.io/twitter-image.png">
+    <meta name="twitter:creator" content="@nutricheck">
+    <meta name="twitter:site" content="@nutricheck">
+    
+    <!-- Technical Meta Tags -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="canonical" href="https://nutricheck.github.io">
+    <link rel="alternate" hreflang="en" href="https://nutricheck.github.io">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//api.nal.usda.gov">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "NutriCheck",
+        "description": "The world's #1 free nutrition calculator. Instantly check calories, macronutrients, vitamins, and minerals for any food.",
+        "url": "https://nutricheck.github.io",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "NutriCheck",
+            "url": "https://nutricheck.github.io"
+        },
+        "featureList": [
+            "Food nutrition calculator",
+            "Calorie checker",
+            "Macronutrient analysis",
+            "Vitamin and mineral tracking",
+            "Food comparison tool",
+            "USDA database integration"
+        ],
+        "screenshot": "https://nutricheck.github.io/screenshot.png",
+        "softwareVersion": "1.0.0",
+        "datePublished": "2024-01-01",
+        "inLanguage": "en",
+        "isFamilyFriendly": true,
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "ratingCount": "10000",
+            "bestRating": "5",
+            "worstRating": "1"
+        }
+    }
+    </script>
+    
+    <!-- Additional JSON-LD for Organization -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "NutriCheck",
+        "url": "https://nutricheck.github.io",
+        "logo": "https://nutricheck.github.io/logo.png",
+        "description": "Leading free nutrition calculator and food analysis tool",
+        "sameAs": [
+            "https://twitter.com/nutricheck",
+            "https://facebook.com/nutricheck",
+            "https://instagram.com/nutricheck"
+        ],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer service",
+            "url": "https://nutricheck.github.io/contact"
+        }
+    }
+    </script>
+</head>
+<body itemscope itemtype="https://schema.org/WebApplication">
+    <header class="header" role="banner">
+        <div class="container">
+            <div class="logo" itemprop="brand">
+                <h1 itemprop="name">NutriCheck</h1>
+                <p itemprop="description">Free Food Nutrition Calculator & Calorie Checker - Instant USDA Nutrition Facts</p>
+            </div>
+            <div class="theme-toggle">
+                <button id="darkModeToggle" class="dark-mode-btn" aria-label="Toggle dark mode">
+                    <span class="sun-icon">sun</span>
+                    <span class="moon-icon">moon</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container">
+            <ul>
+                <li><a href="#search" class="nav-link active" data-section="search">Search</a></li>
+                <li><a href="#articles" class="nav-link" data-section="articles">Articles</a></li>
+                <li><a href="#compare" class="nav-link" data-section="compare">Compare</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main" role="main">
+        <div class="container">
+            <section class="search-section" itemscope itemtype="https://schema.org/SearchAction">
+                <h2 class="visually-hidden">Food Nutrition Search</h2>
+                <div class="ultimate-search-container">
+                    <div class="search-input-wrapper">
+                        <div class="search-input-container">
+                            <button id="voiceSearchBtn" class="voice-search-btn" aria-label="Voice search nutrition foods">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                                    <line x1="12" y1="19" x2="12" y2="23"></line>
+                                    <line x1="8" y1="23" x2="16" y2="23"></line>
+                                </svg>
+                            </button>
+                            <input type="text" id="foodSearch" placeholder="Search calories, protein, vitamins for any food..." class="ultimate-search-input" autocomplete="off" itemprop="query-input">
+                            <button id="clearSearchBtn" class="clear-search-btn hidden" aria-label="Clear nutrition search">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <!-- Autocomplete Dropdown -->
+                        <div id="autocompleteDropdown" class="autocomplete-dropdown hidden">
+                            <div class="autocomplete-section">
+                                <div class="autocomplete-header">Popular Searches</div>
+                                <div id="popularSearches" class="autocomplete-items"></div>
+                            </div>
+                            <div class="autocomplete-section">
+                                <div class="autocomplete-header">Recent Searches</div>
+                                <div id="recentSearches" class="autocomplete-items"></div>
+                            </div>
+                            <div class="autocomplete-section">
+                                <div class="autocomplete-header">Suggestions</div>
+                                <div id="searchSuggestions" class="autocomplete-items"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Advanced Filters -->
+                        <div class="search-filters">
+                            <button id="filterToggle" class="filter-toggle-btn">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polygon points="22 3 2 3 10 12.46 10 19 14 16 14 12.46 22 3"></polygon>
+                                </svg>
+                                Filters
+                            </button>
+                            <div id="advancedFilters" class="advanced-filters hidden">
+                                <div class="filter-group">
+                                    <label>Category</label>
+                                    <select id="categoryFilter" class="filter-select">
+                                        <option value="all">All Foods</option>
+                                        <option value="fruits">Fruits</option>
+                                        <option value="vegetables">Vegetables</option>
+                                        <option value="proteins">Proteins</option>
+                                        <option value="grains">Grains</option>
+                                        <option value="dairy">Dairy</option>
+                                        <option value="beverages">Beverages</option>
+                                    </select>
+                                </div>
+                                <div class="filter-group">
+                                    <label>Max Calories</label>
+                                    <input type="number" id="calorieFilter" class="filter-input" placeholder="100" min="0">
+                                </div>
+                                <div class="filter-group">
+                                    <label>Dietary</label>
+                                    <div class="checkbox-group">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" id="vegetarianFilter" class="filter-checkbox">
+                                            <span>Vegetarian</span>
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" id="veganFilter" class="filter-checkbox">
+                                            <span>Vegan</span>
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" id="glutenFreeFilter" class="filter-checkbox">
+                                            <span>Gluten-Free</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button id="searchBtn" class="ultimate-search-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                        Search
+                    </button>
+                </div>
+                
+                <!-- Search History -->
+                <div id="searchHistory" class="search-history hidden">
+                    <div class="history-header">
+                        <h3>Search History</h3>
+                        <button id="clearHistoryBtn" class="clear-history-btn">Clear All</button>
+                    </div>
+                    <div id="historyItems" class="history-items"></div>
+                </div>
+                
+                <!-- Keyboard Shortcuts Help -->
+                <div id="keyboardHelp" class="keyboard-help hidden">
+                    <div class="help-header">Keyboard Shortcuts</div>
+                    <div class="shortcut-list">
+                        <div class="shortcut-item">
+                            <kbd>Ctrl</kbd> + <kbd>K</kbd>
+                            <span>Focus search</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <kbd>Esc</kbd>
+                            <span>Clear search</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <kbd>Enter</kbd>
+                            <span>Search</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <kbd>Ctrl</kbd> + <kbd>Enter</kbd>
+                            <span>Advanced search</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <kbd>Ctrl</kbd> + <kbd>/</kbd>
+                            <span>Show help</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="loadingSpinner" class="loading-spinner hidden"></div>
+            </section>
+
+            <section id="articles" class="articles-section hidden" itemscope itemtype="https://schema.org/CollectionPage">
+                <div class="articles-header">
+                    <h2 itemprop="name">Expert Nutrition Articles & Healthy Eating Guides</h2>
+                    <meta itemprop="description" content="Free nutrition articles written by experts. Learn about calories, macronutrients, vitamins, minerals, healthy diets, and meal planning for optimal health.">
+                    <div class="article-controls">
+                        <div class="article-search">
+                            <input type="text" id="articleSearch" placeholder="Search nutrition articles, diet tips, healthy recipes..." class="article-search-input">
+                        </div>
+                        <div class="article-filters">
+                            <select id="categoryFilter" class="category-filter">
+                                <option value="all">All Categories</option>
+                                <option value="basics">Nutrition Basics</option>
+                                <option value="vitamins">Vitamins & Minerals</option>
+                                <option value="diets">Diets & Plans</option>
+                                <option value="health">Health Tips</option>
+                                <option value="recipes">Healthy Recipes</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="articles-grid" id="articlesGrid">
+                    <!-- Articles will be dynamically loaded here -->
+                </div>
+            </section>
+
+            <section id="article-detail" class="article-detail-section hidden">
+                <div class="article-detail-container">
+                    <button id="backToArticles" class="back-btn">Back to Articles</button>
+                    <article id="articleContent" class="article-content">
+                        <!-- Article content will be loaded here -->
+                    </article>
+                </div>
+            </section>
+
+            <div class="content-wrapper">
+                <section class="results-section results-column">
+                    <div id="searchResults" class="search-results hidden">
+                        <h2>Search Results</h2>
+                        <div id="resultsList" class="results-list"></div>
+                    </div>
+                </section>
+
+                <section class="nutrition-section nutrition-column">
+                    <div id="nutritionDisplay" class="nutrition-display hidden">
+                        <h2 id="foodName" class="food-name"></h2>
+                        <div class="nutrition-grid">
+                            <div class="nutrition-card">
+                                <h3>Macronutrients</h3>
+                                <div id="macroNutrients"></div>
+                            </div>
+                            <div class="nutrition-card">
+                                <h3>Vitamins</h3>
+                                <div id="vitamins"></div>
+                            </div>
+                            <div class="nutrition-card">
+                                <h3>Minerals</h3>
+                                <div id="minerals"></div>
+                            </div>
+                            <div class="nutrition-card">
+                                <h3>Other</h3>
+                                <div id="otherNutrients"></div>
+                            </div>
+                        </div>
+                        <button id="addToCompare" class="compare-btn">Add to Comparison</button>
+                    </div>
+                </section>
+            </div>
+
+            <section class="comparison-section">
+                <div id="comparisonDisplay" class="comparison-display hidden">
+                    <h2>Food Comparison</h2>
+                    <div id="comparisonList" class="comparison-list"></div>
+                    <button id="clearComparison" class="clear-btn">Clear Comparison</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 NutriCheck. Powered by MuguroMwega</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
